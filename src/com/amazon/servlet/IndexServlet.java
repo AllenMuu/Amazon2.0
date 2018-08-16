@@ -53,7 +53,6 @@ public class IndexServlet extends HttpServlet {
 			
 		}
 		req.getSession().setAttribute("productlist", p);
-		System.out.println(p.get(0).getFileName());
 		req.getRequestDispatcher("/index.jsp").forward(req, resp);
 
 	}

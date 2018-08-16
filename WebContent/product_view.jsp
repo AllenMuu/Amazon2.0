@@ -20,27 +20,11 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/scripts/index.js"></script>
 <script type="text/javascript" src="scripts/product_view.js"></script>
-<script type="text/javascript">
-	$(function() {
-		var t = $("#count");
-		$("#add").click(function() {
-			t.val(parseInt(t.val()) + 1);
-			$('#minus').removeAttr("disabled");
-		});
-		$("#minus").click(function() {
-			if (t.val() == 1) {
-				$('#minus').attr("disabled", true);
-				return;
-			}
-			t.val(parseInt(t.val()) - 1);
-		});
-	});
-</script>
 </head>
 <body>
 	<%@ include file="index_top.jsp"%>
 	<div id="position" class="wrap">
-		您现在的位置：<a href="index.jsp">亚马逊</a> &gt; <a href=""></a> &gt; <a
+		您现在的位置：<a href="${pageContext.request.contextPath}/doindex">亚马逊</a> &gt; <a href=""></a> &gt; <a
 			href=""></a>
 	</div>
 	<div id="main" class="wrap">
@@ -57,26 +41,30 @@
 					<p>
 						商城价：<span class="price">￥${product.productPrice}</span>
 					</p>
-					<c:if test="${product.productStock!=0 }">
+					<c:if test="${product.productStock>0 }">
 						<p>
-							库 存：<span id="stock">${product.productStock}</span>(有货) </p>
-							<input
-								type="button" id="minus" value=" - " width="3px"> <input
-								type="text" id="count" name="count" value="1" maxlength="2"
-								size="1" style="text-align: center; vertical-align: middle">
-
-							<input type="button" id="add" value=" + " width="2px">
-						<div class="button">
-							<input type="button" name="button" value=""
-								style="background: url(images/buyNow.png)" /> <input
-								type="image" name="imageField" src="images/cartbutton.png" />
-						</div>
-						
+							库 存：<span id="stock">${product.productStock}</span>(有货) 
+						</p>
 					</c:if>
-					<c:if test="${product.productStock ==0 }">
+					<c:if test="${product.productStock <=0 }">
 						<p>库 存：无货</p>
 					</c:if>
-
+					
+					<input type="button" id="minus" value=" - " width="3px" onclick="minus()"> 
+					<input type="text" id="count" name="count" value="1" maxlength="5" size="1" style="text-align: center; vertical-align: middle">
+					<input type="button" id="add" value=" + " width="2px" onclick="add()">
+					<c:if test="${sessionScope.user==null}">
+					<div class="button">
+						<input type="button" name="button" value="" onclick="remaind()" style="background: url(images/buyNow.png)" /> 
+						<input type="image" name="imageField" onclick="remaind()" src="images/cartbutton.png" />
+					</div>
+					</c:if>
+					<c:if test="${sessionScope.user!=null}">
+					<div class="button">
+						<input type="button" name="button" value="" onclick="goingToBuy(${product.productId})" style="background: url(images/buyNow.png)" /> 
+						<input type="image" name="imageField" onclick="addToCart(${product.productId})" src="images/cartbutton.png" />
+					</div>
+					</c:if>
 				</div>
 				<div class="clear"></div>
 			</div>
