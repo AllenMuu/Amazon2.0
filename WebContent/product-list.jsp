@@ -55,32 +55,21 @@
 			<div class="product-list">
 				<h2>全部商品</h2>
 				<div class="clear"></div>
-				<ul class="product clearfix">
-
+				<ul class="product2">
+							
+				<c:forEach items="${protypeid}" var="pid">
 					<li>
 						<dl>
 							<dt>
-								<a href="#" target="_self"><img src="images/product/0.jpg" /></a>
+								<a href="${pageContext.request.contextPath}/doproduct?productId=${pid.productId}" target="_self"><img src="${pid.fileName} " /></a>
 							</dt>
 							<dd class="title">
-								<a href="#" target="_self">商品名称</a>
+								<a href="${pageContext.request.contextPath}/doproduct?productId=${pid.productId}" target="_self">${pid.productName}</a>
 							</dd>
-							<dd class="price">￥12.34</dd>
+							<dd class="price">￥${pid.productPrice}</dd>
 						</dl>
 					</li>
-
-					<li>
-						<dl>
-							<dt>
-								<a href="#" target="_self"><img src="images/product/0.jpg" /></a>
-							</dt>
-							<dd class="title">
-								<a href="#" target="_self">商品名称</a>
-							</dd>
-							<dd class="price">￥12.34</dd>
-						</dl>
-					</li>
-
+				</c:forEach>
 
 				</ul>
 				<div class="clear"></div>

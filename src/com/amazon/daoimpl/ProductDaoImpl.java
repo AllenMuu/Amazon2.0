@@ -81,5 +81,19 @@ public class ProductDaoImpl implements ProductDao{
 		return product;
 	}
 	
+	/*
+	 * (根据id的查询大小标题,查询商品信息)
+	 * @see com.amazon.dao.ProductDao#getProductTypeById(java.lang.String)
+	 */
+	@Override
+	public List<Product> getProductTypeById(String categoryid) throws SQLException {
+		Connection conn = C3P0Util.getCurrConnection();
+		String sql = "SELECT HP_ID as productId,HP_NAME as productName ,HP_DESCRIPTION as productDesp,HP_PRICE as productPrice,HP_STOCK as productStock,HPC_ID as categoryId,HPC_CHILD_ID as childTypeId,HP_FILE_NAME as fileName FROM HWUA_PRODUCT where HPC_CHILD_ID = ? ";
+		Object[] params = {categoryid};
+		QueryRunner qr = new QueryRunner();
+		List<Product> list = qr.query(conn, sql, new BeanListHandler<>(Product.class), params);
+		return list;
+	}
+	
 	
 }

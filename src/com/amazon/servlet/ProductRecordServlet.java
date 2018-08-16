@@ -21,8 +21,6 @@ public class ProductRecordServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ProductBiz IProductBiz = new ProductBizImpl();
-		String param = req.getParameter("param");
-		
 			String id = req.getParameter("productId");
 			LinkIdUtil link = new LinkIdUtil();
 			String linkid = link.linkID(id, req);

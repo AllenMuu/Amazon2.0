@@ -20,6 +20,22 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/scripts/index.js"></script>
 <script type="text/javascript" src="scripts/product_view.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var t = $("#count");
+		$("#add").click(function() {
+			t.val(parseInt(t.val()) + 1);
+			$('#minus').removeAttr("disabled");
+		});
+		$("#minus").click(function() {
+			if (t.val() == 1) {
+				$('#minus').attr("disabled", true);
+				return;
+			}
+			t.val(parseInt(t.val()) - 1);
+		});
+	});
+</script>
 </head>
 <body>
 	<%@ include file="index_top.jsp"%>
@@ -41,22 +57,25 @@
 					<p>
 						商城价：<span class="price">￥${product.productPrice}</span>
 					</p>
-					<p>
-						库 存：<span id="stock">${product.productStock}</span>(有货)
-					</p>
-					<p>
-						库 存：无货 
-					</p>	
-						<input type="button" id="minus" value=" - " width="3px">
+					<c:if test="${product.productStock!=0 }">
+						<p>
+							库 存：<span id="stock">${product.productStock}</span>(有货) </p>
+							<input
+								type="button" id="minus" value=" - " width="3px"> <input
+								type="text" id="count" name="count" value="1" maxlength="2"
+								size="1" style="text-align: center; vertical-align: middle">
+
+							<input type="button" id="add" value=" + " width="2px">
+						<div class="button">
+							<input type="button" name="button" value=""
+								style="background: url(images/buyNow.png)" /> <input
+								type="image" name="imageField" src="images/cartbutton.png" />
+						</div>
 						
-						<input type="text" id="count" name="count" value="1" maxlength="5"
-							size="1" style="text-align: center; vertical-align: middle">
-						<input type="button" id="add" value=" + " width="2px">
-					<div class="button">
-						<input type="button" name="button" value=""
-							style="background: url(images/buyNow.png)" /> <input
-							type="image" name="imageField" src="images/cartbutton.png" />
-					</div>
+					</c:if>
+					<c:if test="${product.productStock ==0 }">
+						<p>库 存：无货</p>
+					</c:if>
 
 				</div>
 				<div class="clear"></div>
@@ -66,7 +85,8 @@
 					<strong>商品详情</strong>
 				</h2>
 				<div class="text">
-					商品名字：${product.productName}<br /> 商品描述：${product.productDesp}<br /> 商品价格：￥${product.productPrice}<br /> 商品库存：${product.productStock}<br />
+					商品名字：${product.productName}<br /> 商品描述：${product.productDesp}<br />
+					商品价格：￥${product.productPrice}<br /> 商品库存：${product.productStock}<br />
 				</div>
 			</div>
 		</div>

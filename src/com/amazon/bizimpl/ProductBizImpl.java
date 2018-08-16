@@ -74,4 +74,15 @@ public class ProductBizImpl implements ProductBiz{
 		return Product;
 	}
 
+	@Override
+	public List<Product> productSortById(String categoryid) {
+		List<Product> list = null;
+		try {
+			list = IProductDao.getProductTypeById(categoryid);
+		} catch (SQLException e) {
+			throw new RuntimeException("商品标题种类失败");
+		}
+		return list;
+	}
+
 }

@@ -26,6 +26,7 @@ public class IndexServlet extends HttpServlet {
 		List<Product> list = IProductBiz.productSort();
 		List<Product> plist = IProductBiz.queryAllProduct();
 		List<News> nlist = IProductBiz.getNews();
+		
 		req.setAttribute("producttype", list);
 		req.setAttribute("allproduct", plist);
 		req.setAttribute("newslist", nlist);

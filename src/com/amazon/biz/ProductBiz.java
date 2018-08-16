@@ -15,4 +15,6 @@ public interface ProductBiz {
 	public List<Product> queryAllProduct();
 
 	public Product getProductById(String id);
+
+	public List<Product> productSortById(String categoryid);
 }
