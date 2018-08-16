@@ -41,8 +41,10 @@ public class IndexServlet extends HttpServlet {
 					String value = cookie.getValue();// 得到拼接好的字符串
 					String[] ids = value.split("-");
 					for (String id : ids) {
+						System.out.println(id);
 						Product product = IProductBiz.getProductById(id);
 						p.add(product);
+						System.out.println("size:"+p.size());
 					}
 				}
 

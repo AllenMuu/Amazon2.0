@@ -16,19 +16,25 @@ import com.amazon.biz.ProductBiz;
 import com.amazon.bizimpl.ProductBizImpl;
 import com.amazon.utils.LinkIdUtil;
 
-@WebServlet("/productrecord")
+@WebServlet("/doproduct")
 public class ProductRecordServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ProductBiz IProductBiz = new ProductBizImpl();
-		String id = req.getParameter("productId");
-		LinkIdUtil link = new LinkIdUtil();
-		String linkid = link.linkID(id, req);
-		Cookie cookie = new Cookie("histroyrecord", linkid);
-		cookie.setPath(req.getContextPath());
-		cookie.setMaxAge(Integer.MAX_VALUE);
-		resp.addCookie(cookie);// 把cookie存到客户端
-		req.getRequestDispatcher("/product_view.jsp").forward(req, resp);
+		String param = req.getParameter("param");
+		
+			String id = req.getParameter("productId");
+			LinkIdUtil link = new LinkIdUtil();
+			String linkid = link.linkID(id, req);
+			Cookie cookie = new Cookie("histroyrecord", linkid);
+			cookie.setPath(req.getContextPath());
+			cookie.setMaxAge(Integer.MAX_VALUE);
+			resp.addCookie(cookie);// 把cookie存到客户端
+			Product product = IProductBiz.getProductById(id);
+			req.setAttribute("product", product);
+			req.getRequestDispatcher("/product_view.jsp").forward(req, resp);
+		
+		
 		
 	
 	}

@@ -31,12 +31,14 @@
 			<div class="pre_look">
 				<h3>最近浏览</h3>
 				<dl>
-					<c:forEach items="${productlist} " var="p">
+					<c:forEach items="${productlist}" var="p">
 						<dt>
-							<img style="width: 54px; height: 54px;" src="${p.fileName}" />
+							<a href="${pageContext.request.contextPath}/doproduct?productId=${p.productId}">
+								<img style="width: 54px; height: 54px;" src="${p.fileName}" />
+							</a>	
 						</dt>
 						<dd>
-							<a href="${pageContext.request.contextPath}/productrecord?productId=${p.productId}">
+							<a href="${pageContext.request.contextPath}/doproduct?productId=${p.productId}">
 								${p.productName}
 							</a>
 						</dd>
@@ -65,15 +67,15 @@
 			</div>
 
 			<ul class="product2">
-				<c:forEach items="${allproduct }" var="ap" begin="0" end="7">
+				<c:forEach items="${allproduct}" var="ap" begin="0" end="11">
 					<li>
 						<dl>
 							<dt>
-								<a href="${pageContext.request.contextPath}/productrecord?productId=${ap.productId}" target="_self">
+								<a href="${pageContext.request.contextPath}/doproduct?productId=${ap.productId}" target="_self">
 								<img src="${ap.fileName }" /></a>
 							</dt>
 							<dd class="title">
-								<a href="${pageContext.request.contextPath}/productrecord?productId=${ap.productId}" target="_self">${ap.productName }</a>
+								<a href="${pageContext.request.contextPath}/doproduct?productId=${ap.productId}" target="_self">${ap.productName }</a>
 							</dd>
 							<dd class="price">${ap.productPrice}</dd>
 						</dl>

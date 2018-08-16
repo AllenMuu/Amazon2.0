@@ -32,20 +32,23 @@
 			<%@ include file="index_product_sort.jsp"%>
 		</div>
 		<div id="product" class="main">
-			<h1>商品名称:</h1>
+			<h1>商品名称:${product.productName}</h1>
 			<div class="infos">
 				<div class="thumb">
-					<img style="width: 100px; height: 100px;" src="" />
+					<img style="width: 100px; height: 100px;" src="${product.fileName}" />
 				</div>
 				<div class="buy">
 					<p>
-						商城价：<span class="price">￥</span>
+						商城价：<span class="price">￥${product.productPrice}</span>
 					</p>
 					<p>
-						库 存：<span id="stock"></span>(有货)
+						库 存：<span id="stock">${product.productStock}</span>(有货)
 					</p>
 					<p>
-						库 存：无货 <input type="button" id="minus" value=" - " width="3px">
+						库 存：无货 
+					</p>	
+						<input type="button" id="minus" value=" - " width="3px">
+						
 						<input type="text" id="count" name="count" value="1" maxlength="5"
 							size="1" style="text-align: center; vertical-align: middle">
 						<input type="button" id="add" value=" + " width="2px">
@@ -63,7 +66,7 @@
 					<strong>商品详情</strong>
 				</h2>
 				<div class="text">
-					商品名字：<br /> 商品描述：<br /> 商品价格：￥<br /> 商品库存：<br />
+					商品名字：${product.productName}<br /> 商品描述：${product.productDesp}<br /> 商品价格：￥${product.productPrice}<br /> 商品库存：${product.productStock}<br />
 				</div>
 			</div>
 		</div>
