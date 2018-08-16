@@ -67,5 +67,19 @@ public class ProductDaoImpl implements ProductDao{
 		return list;
 	}
 	
+	/*
+	 * (根据id得到商品信息,用于存储cookie)
+	 * @see com.amazon.dao.ProductDao#getProductinfoById(java.lang.String)
+	 */
+	@Override
+	public Product getProductinfoById(String id) throws SQLException {
+		Connection conn = C3P0Util.getCurrConnection();
+		String sql = "SELECT HP_ID as productId,HP_NAME as productName ,HP_DESCRIPTION as productDesp,HP_PRICE as productPrice,HP_STOCK as productStock,HPC_ID as categoryId,HPC_CHILD_ID as childTypeId,HP_FILE_NAME as fileName FROM HWUA_PRODUCT where HP_ID = ? ";
+		Object[] params = {id};
+		QueryRunner qr = new QueryRunner();
+		Product product = qr.query(conn, sql, new BeanHandler<>(Product.class), params);
+		return product;
+	}
+	
 	
 }

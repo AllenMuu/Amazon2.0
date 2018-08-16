@@ -14,5 +14,5 @@ public interface ProductBiz {
 
 	public List<Product> queryAllProduct();
 
-	public Product getProductById(int id);
+	public Product getProductById(String id);
 }

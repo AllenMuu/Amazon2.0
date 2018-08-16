@@ -14,4 +14,6 @@ public interface ProductDao {
 	public News getNewsById(int newsId) throws SQLException;
 
 	public List<Product> getAllProducts() throws SQLException;
+	
+	public Product getProductinfoById(String id) throws SQLException;
 }

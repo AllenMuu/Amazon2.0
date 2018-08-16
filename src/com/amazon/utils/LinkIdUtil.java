@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-public class Linked {
+public class LinkIdUtil {
 	public String linkID(String id, HttpServletRequest req) {
 		// 1.加入第一次访问访问图书列表，也就是说没有Cookie,那么直接返回id
 		Cookie[] cookies = req.getCookies();
@@ -14,7 +14,7 @@ public class Linked {
 			return id;
 		}
 
-		// 2.//存在的cookie,但没有名字histroyrecord的cookie
+		 //2.存在的cookie,但没有名字为histroyrecord的cookie
 		Cookie historyCookie = null;
 		for (Cookie cookie : cookies) {
 			if (cookie.getName().equals("histroyrecord")) {

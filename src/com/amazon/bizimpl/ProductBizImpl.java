@@ -63,9 +63,15 @@ public class ProductBizImpl implements ProductBiz{
 	}
 
 	@Override
-	public Product getProductById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Product getProductById(String id) {
+		Product Product = null;
+		try {
+			Product  = IProductDao.getProductinfoById(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Product;
 	}
 
 }
