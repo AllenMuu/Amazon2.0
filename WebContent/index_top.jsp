@@ -23,7 +23,7 @@
 
 			<ul class="m_right">
 				<li><img src="images/icon_3.png"><a
-					href="javascript:tips()" class="c_red">购物车</a></li>
+					href="${pageContext.request.contextPath}/" class="c_red">购物车</a></li>
 				<li><img src="images/icon_4.png"><a
 					href="javascript:AddFavorite('我的网站',location.href)">收藏</a></li>
 				<li><img src="images/icon_2.png"><a href="guestbook.jsp">留言</a></li>

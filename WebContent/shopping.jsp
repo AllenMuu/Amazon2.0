@@ -23,7 +23,7 @@
 </div>
 <div class="wrap">
 	<div id="shopping">
-		<form action="doBuy" method="post">
+		<form action="${pageContext.request.contextPath }/doorder" method="post">
 			<table>
 				<tr>
 					<th>商品名称</th>
@@ -35,7 +35,10 @@
 				
 				<!-- 根据用户购物车生成列表 -->
 				<tr id="product_id_1">
-					<td class="thumb"><img style="width: 100px; height: 100px;" src="" /><a href=""></a></td>
+					<td class="thumb"><img style= "width: 100px; height: 100px;" src="" />
+					<a href="商品链接${pageContext.request.contextPath}/doproduct?productId=${pid.productId}">${cartlist.proName}</a>
+						商品名称${cartlist.proName}
+					</td>
 					<td class="price" id="price_id_1">
 						￥<span id="span_1"></span>
 						<input type="hidden" id="subPrice" value="" name="sumPrice"/>
