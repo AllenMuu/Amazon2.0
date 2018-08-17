@@ -35,9 +35,9 @@ public class LoginServlet extends HttpServlet{
 			if (user != null) {
 				// 把用户信息放到session中
 				req.getSession().setAttribute("user", user);
-				System.out.println(req.getAttribute("user"));
-//				resp.sendRedirect(req.getContextPath()+"/index.jsp");
-				req.getRequestDispatcher("/doindex").forward(req, resp);
+				System.out.println("user"+req.getSession().getAttribute("user"));
+				resp.sendRedirect(req.getContextPath()+"/doindex");
+//				req.getRequestDispatcher("/doindex").forward(req, resp);
 			} else {
 				req.setAttribute("info", "登陆失败,请先注册");
 				req.getRequestDispatcher("/register.jsp").forward(req, resp);

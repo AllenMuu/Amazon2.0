@@ -8,6 +8,7 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
+import com.amazon.bin.Cart;
 import com.amazon.bin.News;
 import com.amazon.bin.Product;
 import com.amazon.dao.ProductDao;
@@ -92,6 +93,33 @@ public class ProductDaoImpl implements ProductDao{
 		Object[] params = {categoryid};
 		QueryRunner qr = new QueryRunner();
 		List<Product> list = qr.query(conn, sql, new BeanListHandler<>(Product.class), params);
+		return list;
+	}
+	
+	/*
+	 * (加入购物车)
+	 * @see com.amazon.dao.ProductDao#save(com.amazon.bin.Cart)
+	 */
+	@Override
+	public int save(Cart cart) throws SQLException {
+		String sql = "insert into HWUA_CART values(null,?,?,?)";
+		Connection conn=C3P0Util.getCurrConnection();
+		Object[] params = { cart.getProductid(), cart.getProductcount(),cart.getUserid() };
+		QueryRunner qr = new QueryRunner();
+		return qr.update(conn,sql, params);
+	}
+	
+	/*
+	 * (查询购物车)
+	 * @see com.amazon.dao.ProductDao#queryCartById(int)
+	 */
+	@Override
+	public List<Cart> queryCartById(int userid) throws SQLException {
+		Connection conn = C3P0Util.getCurrConnection();
+		String sql = "SELECT HP_ID as productId,HP_NAME as productName ,HP_DESCRIPTION as productDesp,HP_PRICE as productPrice,HP_STOCK as productStock,HPC_ID as categoryId,HPC_CHILD_ID as childTypeId,HP_FILE_NAME as fileName FROM HWUA_PRODUCT where HPC_CHILD_ID = ? ";
+		Object[] params = {userid};
+		QueryRunner qr = new QueryRunner();
+		List<Cart> list = qr.query(conn, sql, new BeanListHandler<>(Cart.class), params);
 		return list;
 	}
 	

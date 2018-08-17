@@ -32,10 +32,10 @@
 			<%@ include file="index_product_sort.jsp"%>
 		</div>
 		<div id="product" class="main">
-			<h1>商品名称:${product.productName}</h1>
+			<h1 id="productname">商品名称:${product.productName}</h1>
 			<div class="infos">
 				<div class="thumb">
-					<img style="width: 100px; height: 100px;" src="${product.fileName}" />
+					<img id="filepath" style="width: 100px; height: 100px;" src="${product.fileName}" />
 				</div>
 				<div class="buy">
 					<p>

@@ -3,6 +3,7 @@ package com.amazon.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.amazon.bin.Cart;
 import com.amazon.bin.News;
 import com.amazon.bin.Product;
 
@@ -18,4 +19,8 @@ public interface ProductDao {
 	public Product getProductinfoById(String id) throws SQLException;
 
 	public List<Product> getProductTypeById(String categoryid) throws SQLException;
+
+	public int save(Cart cart) throws SQLException;
+
+	public List<Cart> queryCartById(int userid) throws SQLException;
 }

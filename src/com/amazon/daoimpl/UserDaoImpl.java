@@ -55,6 +55,11 @@ public class UserDaoImpl implements UserDao{
 		user = qr.query(conn, sql, new BeanHandler<>(User.class), params);
 		return user;
 	}
+	
+	/*
+	 * (修改成登录状态)
+	 * @see com.amazon.dao.UserDao#updatelogin(com.amazon.bin.User)
+	 */
 	@Override
 	public int updatelogin(User user) throws SQLException {
 		Connection conn = C3P0Util.getCurrConnection();
@@ -64,6 +69,11 @@ public class UserDaoImpl implements UserDao{
 		// 加入QueryRunner对象，给定一个数据源参数，那么连接当执行完后会自动释放（返回连接池）
 		return qr.update(conn, sql, params);
 	}
+	
+	/*
+	 * (修改成退出状态)
+	 * @see com.amazon.dao.UserDao#updateregister(com.amazon.bin.User)
+	 */
 	@Override
 	public int updateregister(User user) throws SQLException {
 		Connection conn = C3P0Util.getCurrConnection();
@@ -72,6 +82,8 @@ public class UserDaoImpl implements UserDao{
 		QueryRunner qr = new QueryRunner();
 		return qr.update(conn, sql, params);
 	}
+	
+	
 	@Override
 	public int getStatus(User user) throws SQLException {
 		Connection conn = C3P0Util.getCurrConnection();

@@ -2,6 +2,7 @@ package com.amazon.biz;
 
 import java.util.List;
 
+import com.amazon.bin.Cart;
 import com.amazon.bin.News;
 import com.amazon.bin.Product;
 
@@ -17,4 +18,8 @@ public interface ProductBiz {
 	public Product getProductById(String id);
 
 	public List<Product> productSortById(String categoryid);
+
+	public int addCart(Cart cart);
+
+	public List<Cart> queryCart(int userid);
 }

@@ -39,12 +39,6 @@ public class RegisterServlet extends HttpServlet {
 			} else {
 				resp.sendRedirect(req.getContextPath() + "/register.jsp");
 			}
-		} else if (param.equals("queryByName")) {
-			
-		} else if (param.equals("queryByEmail")) {
-
-		} else if (param.equals("queryBylike")) {
-
 		} else if (param.equals("exit")) {
 			// 修改用户状态为0
 			User u = (User) req.getSession().getAttribute("user");

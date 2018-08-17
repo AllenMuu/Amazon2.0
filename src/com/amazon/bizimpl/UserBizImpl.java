@@ -24,6 +24,7 @@ public class UserBizImpl implements UserBiz {
 			int status = IUserDao.getStatus(user);
 			if (status == 0) {
 				u = IUserDao.query(user);
+				IUserDao.updatelogin(user);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -65,7 +66,7 @@ public class UserBizImpl implements UserBiz {
 	public int Logout(User user) {
 		int status = 0;
 		try {
-			status = IUserDao.updatelogin(user);
+			status = IUserDao.updateregister(user);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
