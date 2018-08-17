@@ -18,7 +18,7 @@ import sun.awt.RepaintArea;
 
 public class RegisterServlet extends HttpServlet {
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		UserBiz IUserBiz = new UserBizImpl();
 		String param = req.getParameter("param");
@@ -35,7 +35,7 @@ public class RegisterServlet extends HttpServlet {
 			// 调用业务层方法
 			boolean flag = IUserBiz.registerUser(user);
 			if (flag) {
-				resp.sendRedirect(req.getContextPath() + "/index.jsp");
+				resp.sendRedirect(req.getContextPath() + "/doindex");
 			} else {
 				resp.sendRedirect(req.getContextPath() + "/register.jsp");
 			}
@@ -54,11 +54,11 @@ public class RegisterServlet extends HttpServlet {
 			if (status>0) {
 				HttpSession session = req.getSession(false);// 防止创建Session
 				if (session == null) {
-					resp.sendRedirect(req.getContextPath() + "/index.jsp");
+					resp.sendRedirect(req.getContextPath() + "/doindex");
 					return;
 				}
 				session.removeAttribute("user");
-				resp.sendRedirect(req.getContextPath() + "/index.jsp");
+				resp.sendRedirect(req.getContextPath() + "/doindex");
 			}
 
 		}
@@ -66,7 +66,7 @@ public class RegisterServlet extends HttpServlet {
 	}
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req, resp);
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
 	}
 }

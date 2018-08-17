@@ -15,7 +15,7 @@ import com.amazon.utils.MD5Utils;
 
 public class LoginServlet extends HttpServlet{
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		UserBiz IUserBiz = new UserBizImpl();
 		String username = req.getParameter("userName");
@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet{
 				req.getSession().setAttribute("user", user);
 				System.out.println(req.getAttribute("user"));
 //				resp.sendRedirect(req.getContextPath()+"/index.jsp");
-				req.getRequestDispatcher("/index.jsp").forward(req, resp);
+				req.getRequestDispatcher("/doindex").forward(req, resp);
 			} else {
 				req.setAttribute("info", "登陆失败,请先注册");
 				req.getRequestDispatcher("/register.jsp").forward(req, resp);
@@ -46,5 +46,9 @@ public class LoginServlet extends HttpServlet{
 			req.setAttribute("info", "验证码出错，重新输入");
 			req.getRequestDispatcher("/login.jsp").forward(req, resp);
 		}
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
 	}
 }

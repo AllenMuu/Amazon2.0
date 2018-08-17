@@ -19,7 +19,7 @@
 <%@ include file="index_top.jsp"  %>
 
 <div id="position" class="wrap">
-	您现在的位置：<a href="index.jsp">亚马逊</a> &gt; 购物车
+	您现在的位置：<a href="${pageContext.request.contextPath}/doindex">亚马逊</a> &gt; 购物车
 </div>
 <div class="wrap">
 	<div id="shopping">

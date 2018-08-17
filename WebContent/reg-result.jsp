@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<em class="corner lb"></em>
 		<em class="corner rt"></em>
 		<div class="box">
-			<h1>欢迎注册易买网</h1>
+			<h1>欢迎注册亚马孙</h1>
 			<ul class="steps clearfix">
 				<li class="finished"><em></em>填写注册信息</li>
 				<li class="last-current"><em></em>注册成功</li>
