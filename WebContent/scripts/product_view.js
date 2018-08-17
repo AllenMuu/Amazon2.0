@@ -10,16 +10,16 @@ function addToCart(pid) {
 	var productname = $("#productname").html();
 	//商品图片地址
 	var imgpath = $("#filepath").attr("src");
-	var date=new Date();
-	
 	
 	if(parseInt(count)>parseInt(stock)){
 		alert("您选择的数量超过库存!")
 	}else{
+		
 		$.ajax({
-			url : "/amazon/doaddcart?time="+date,// 请求的servlet地址
+			
+			url : "doaddcart",// 请求的servlet地址
 			type : "GET",// 请求方式
-			data : "productid=" + pid + "&productcount" + count +"&productstock="+stock+"&filename="+imgpath+"&productprice="+price+"&productname="+productname,// 发送到服务器的数据
+			data : "productid=" + pid + "&productcount=" + count +"&productstock="+stock+"&filename="+imgpath+"&productprice="+productprice+"&productname="+productname,// 发送到服务器的数据
 			dataType : "text",// 设置返回数据类型
 			success : function(total) {
 				$("#cartCount").html(total);
@@ -50,7 +50,7 @@ function goingToBuy(pid) {
 	var date=new Date();
 	
 	//alert("goingToBuy="+stock+":"+count+":"+price+":"+name+":"+path);
-	window.location.href="goingToBuy?time="+date+"productid=" + pid + "&productcount" + count +"&productstock="+stock+"&filename="+imgpath+"&productprice="+price+"&productname="+productname;
+	window.location.href="goingToBuy?time="+date+"productid=" + pid + "&productcount=" + count +"&productstock="+stock+"&filename="+imgpath+"&productprice="+price+"&productname="+productname;
 	
 }
 

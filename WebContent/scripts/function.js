@@ -1,10 +1,10 @@
-// JavaScript Document
-window.onload = function() {
-	showChater();
-	scrollChater();
-}
-window.onscroll = scrollChater;
-window.onresize = scrollChater;
+//// JavaScript Document
+//window.onload = function() {
+//	showChater();
+//	scrollChater();
+//}
+//window.onscroll = scrollChater;
+//window.onresize = scrollChater;
 
 function FocusItem(obj) {
 	obj.parentNode.parentNode.className = "current";

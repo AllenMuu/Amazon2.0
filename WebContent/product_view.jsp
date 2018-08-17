@@ -63,7 +63,9 @@
 					<div class="button">
 						<input type="button" name="button" value="" onclick="goingToBuy(${product.productId})" style="background: url(images/buyNow.png)" /> 
 						<input type="image" name="imageField" onclick="addToCart(${product.productId})" src="images/cartbutton.png" />
+					
 					</div>
+					
 					</c:if>
 				</div>
 				<div class="clear"></div>
